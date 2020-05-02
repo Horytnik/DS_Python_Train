@@ -54,17 +54,28 @@ def zadanie3(listTuples):
 test(zadanie3, [(1, 3), (3, 3, 2), (2, 1)], [(2, 1), (3, 3, 2), (1, 3)])
 
 
-def zadanie4(text):
+def zadanie4_old(text):
     sentence = ""
     text = text.replace("$", " ")
     text = text.replace("ok", "")
     words = text.split(" ")
-    for ctr in range(0, len(words), 2):
+    sentence = words[0]
+    for ctr in range(2, len(words), 2):
         sentence = sentence + " " + words[ctr]
     return sentence
 
-
-print(zadanie4("okmy$aiaetiaigaafbaf??a$okwatch$oafbusd$okhas$asbrsi31480$okended$aq340af"))
-
+def zadanie4(text):
+    text = [s.replace('ok','') for s in text.split("$") if ('ok' in s)]
+    return " ".join(text)
 
 test(zadanie4, "okmy$aiaetiaigaafbaf??a$okwatch$oafbusd$okhas$asbrsi31480$okended$aq340af", [109, 121, 32, 119, 97, 116, 99, 104, 32, 104, 97, 115, 32, 101, 110, 100, 101, 100])
+
+from random import randint
+losLicz = randint(0,9)
+
+while(True):
+
+    a = input("Podaj liczbe ktorą wylosowałem:\n")
+    if (losLicz == int(a)):
+        print('Zgadłeś!')
+        break
