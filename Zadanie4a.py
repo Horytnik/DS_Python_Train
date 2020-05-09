@@ -1,5 +1,6 @@
 import matplotlib.image as im
 import matplotlib.pyplot as plt
+import matplotlib.colors as clr
 from zadanie3 import matrixReduce
 import numpy as np
 
@@ -22,3 +23,20 @@ plt.title('Resized')
 ax2.imshow(reshapImg)
 plt.show()
 
+# Zadanie 4B
+openedFile = open("./cfdImg.txt", "w+")
+imageSize = np.shape(reshapImg)
+
+hsvMat = clr.rgb_to_hsv(reshapImg)
+
+for x in range(0,imageSize[0]):
+    openedFile.write('''\n''')
+    for y in range(0,imageSize[1]):
+        if (reshapImg[x,y,0] >= 0.79 ):
+            openedFile.write(' ')
+        elif(reshapImg[x,y,0] <= 0.31):
+            openedFile.write('|')
+        else:
+            openedFile.write('-')
+
+openedFile.close()
